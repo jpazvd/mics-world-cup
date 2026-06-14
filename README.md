@@ -39,7 +39,24 @@ python mics_world_cup_sim.py
 
 The script reads the bundled catalogue, prints every group table and knockout result,
 and names the champion. It is deterministic (fixed seed), so the bracket is fully
-reproducible. The figures in `figures/` are pre-rendered versions of the same bracket.
+reproducible.
+
+## Reproduce the figures
+
+Both figures are generated from the same deterministic simulation — nothing is
+hand-drawn. `mics_world_cup_sim.simulate()` is the single source of truth; the two
+render scripts only lay it out, write the `.svg`, and rasterise a 2× `.png` via
+cairosvg:
+
+```bash
+python make_bracket.py        # -> figures/mics_world_cup_bracket.{svg,png}
+python make_group_board.py    # -> figures/wc26_mics_group_board.{svg,png}
+```
+
+The companion **group board** shows the underlying MICS coverage — survey records per
+nation, and which countries have a MICS7 in the current round:
+
+![MICS coverage group board](figures/wc26_mics_group_board.png)
 
 ## Caveats
 
@@ -55,10 +72,14 @@ catalogue is refreshed.
 
 ```
 mics-world-cup/
-  mics_world_cup_sim.py              the simulation (prints the full bracket)
+  mics_world_cup_sim.py              the simulation — simulate() + prints the bracket
+  make_bracket.py                    renders the knockout bracket figure
+  make_group_board.py                renders the MICS-coverage group board figure
+  _svgkit.py                         shared SVG primitives + UNICEF palette
   data/mics_surveys_catalogue.csv    427 MICS survey records (strength source)
-  figures/mics_world_cup_bracket.*   pre-rendered bracket (PNG + SVG)
-  requirements.txt                   pandas · numpy
+  figures/mics_world_cup_bracket.*   knockout bracket (PNG + SVG)
+  figures/wc26_mics_group_board.*    MICS-coverage group board (PNG + SVG)
+  requirements.txt                   numpy · pandas · cairosvg
 ```
 
 > Not affiliated with or endorsed by FIFA. "World Cup" is used here as a metaphor.
