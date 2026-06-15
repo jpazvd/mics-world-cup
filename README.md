@@ -1,9 +1,9 @@
 # The MICS World Cup '26
 
-The 2026 FIFA World Cup bracket, replayed with **MICS survey-programme strength**
-standing in for football. Every match is decided not by goals but by how deep and
-how current a country's [Multiple Indicator Cluster Surveys](https://mics.unicef.org/)
-programme is.
+The **real official 2026 FIFA World Cup draw** — all 48 nations — replayed with **MICS
+survey-programme strength** standing in for football. Every match is decided not by goals
+but by how deep and how current a country's [Multiple Indicator Cluster Surveys](https://mics.unicef.org/)
+programme is. 🏆 Champion: **Iraq**.
 
 ![MICS World Cup bracket](figures/mics_world_cup_bracket.png)
 
